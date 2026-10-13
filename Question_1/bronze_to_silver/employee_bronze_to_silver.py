@@ -1,7 +1,7 @@
 # Databricks notebook source
 # MAGIC %run ../source_to_bronze/utils
 
-# COMMAND ----------
+
 
 #Define custom schema
 from pyspark.sql.types import (
@@ -32,7 +32,7 @@ country_schema = StructType([
 
 print("All three custom schemas defined successfully!")
 
-# COMMAND ----------
+
 
 base_path = "/Volumes/databricks_assignment/default/assignment_volume"
 
@@ -61,7 +61,7 @@ employee_bronze_df.printSchema()
 department_bronze_df.printSchema()
 country_bronze_df.printSchema()
 
-# COMMAND ----------
+
 
 #Convert camel case into snake case
 from pyspark.sql.functions import col
@@ -81,7 +81,7 @@ country_silver_df = convert_columns_to_snake_case(
 display(employee_silver_df)
 employee_silver_df.printSchema()
 
-# COMMAND ----------
+
 
 # Add Load_Data
 employee_silver_df = add_load_date(
@@ -90,7 +90,7 @@ employee_silver_df = add_load_date(
 )
 display(employee_silver_df)
 
-# COMMAND ----------
+
 
 #Write the Silver Delta dataset
 silver_path = (
@@ -106,7 +106,7 @@ write_delta(
 
 print("Employee Silver Delta data saved successfully")
 
-# COMMAND ----------
+
 
 # verify the silver
 silver_check_df = (
