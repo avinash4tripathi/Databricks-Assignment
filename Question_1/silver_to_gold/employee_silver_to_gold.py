@@ -2,7 +2,7 @@
 # MAGIC %run ../source_to_bronze/utils
 # MAGIC
 
-# COMMAND ----------
+
 
 silver_path = (
     "/Volumes/databricks_assignment/default/assignment_volume"
@@ -18,7 +18,7 @@ employee_gold_df = (
 display(employee_gold_df)
 employee_gold_df.printSchema()
 
-# COMMAND ----------
+
 
 #Department-wise total salary — descending order
 from pyspark.sql.functions import (
@@ -38,7 +38,7 @@ department_salary_df = (
 
 display(department_salary_df)
 
-# COMMAND ----------
+
 
 #Department aur country ke hisaab se employee count
 employee_count_df = (
@@ -52,7 +52,6 @@ employee_count_df = (
 
 display(employee_count_df)
 
-# COMMAND ----------
 
 #Department names aur corresponding country names
 department_country_df = (
@@ -64,7 +63,7 @@ department_country_df = (
 
 display(department_country_df)
 
-# COMMAND ----------
+
 
 #Department-wise average employee age
 average_age_df = (
@@ -78,7 +77,7 @@ average_age_df = (
 
 display(average_age_df)
 
-# COMMAND ----------
+
 
 #Add at_load_date to Gold DataFrame
 gold_df = employee_gold_df.withColumn(
@@ -88,7 +87,7 @@ gold_df = employee_gold_df.withColumn(
 
 display(gold_df)
 
-# COMMAND ----------
+
 
 #Write Gold data in delta format 
 gold_path = (
